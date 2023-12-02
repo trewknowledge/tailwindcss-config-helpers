@@ -1,0 +1,40 @@
+{
+  "name": "@trewknowledge/tailwindcss-config-helpers",
+  "version": "1.0.0",
+  "description": "A few helpers for configuring TailwindCSS using theme.json",
+  "main": "index.js",
+  "dependencies": {
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trewknowledge/tailwindcss-config-helpers.git"
+  },
+  "keywords": [
+    "tailwindcss",
+    "wordpress",
+    "themejson",
+    "theme",
+    "json",
+    "wp"
+  ],
+  "author": {
+		"name": "Trew Knowledge",
+		"email": "info@trewknowledge.com",
+		"url": "https://trewknowledge.com"
+	},
+	"contributors": [
+		{
+			"name": "Fernando Claussen",
+			"email": "fernandoclaussen@gmail.com",
+			"url": "https://fernandoclaussen.com"
+		}
+	],
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/trewknowledge/tailwindcss-config-helpers/issues"
+  },
+  "homepage": "https://github.com/trewknowledge/tailwindcss-config-helpers#readme"
+}
