@@ -6,7 +6,6 @@
   "dependencies": {
     "path": "^0.12.7"
   },
-  "devDependencies": {},
   "scripts": {},
   "repository": {
     "type": "git",
@@ -21,17 +20,17 @@
     "wp"
   ],
   "author": {
-		"name": "Trew Knowledge",
-		"email": "info@trewknowledge.com",
-		"url": "https://trewknowledge.com"
-	},
-	"contributors": [
-		{
-			"name": "Fernando Claussen",
-			"email": "fernandoclaussen@gmail.com",
-			"url": "https://fernandoclaussen.com"
-		}
-	],
+    "name": "Trew Knowledge",
+    "email": "info@trewknowledge.com",
+    "url": "https://trewknowledge.com"
+  },
+  "contributors": [
+    {
+      "name": "Fernando Claussen",
+      "email": "fernandoclaussen@gmail.com",
+      "url": "https://fernandoclaussen.com"
+    }
+  ],
   "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/trewknowledge/tailwindcss-config-helpers/issues"
