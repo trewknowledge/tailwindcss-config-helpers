@@ -1,40 +1,54 @@
+const fs = require('fs');
 import path from 'path';
 
-const wpThemeJson = path.resolve('./theme.json');
+const wpThemeJsonPath = path.resolve('./theme.json');
+let exportObj = {};
 
-const customWPColors = wpThemeJson?.settings?.custom?.colors;
-const wpColorPalleteThemeJson = wpThemeJson?.settings?.color?.palette;
-const wpFontFamilyThemeJson = wpThemeJson?.settings?.typography?.fontFamilies;
-const wpFontSizeThemeJson = wpThemeJson?.settings?.typography?.fontSizes;
+try{
+	// Synchronously read the file
+  const data = fs.readFileSync(wpThemeJsonPath, 'utf8');
 
-/**
- * Colors
- */
-const formattedWpColorPalette = wpColorPalleteThemeJson?.reduce((acc, curr) => {
-	acc[curr.slug] = curr.color;
-	return acc;
-}, {});
+	// Parse the JSON data
+  const wpThemeJson = JSON.parse(data);
 
-export const wpColors = {
-	inherit: 'inherit',
-	current: 'currentColor',
-	transparent: 'transparent',
-	...customWPColors,
-	...formattedWpColorPalette,
-};
+	const customWPColors = wpThemeJson?.settings?.custom?.colors;
+	const wpColorPalleteThemeJson = wpThemeJson?.settings?.color?.palette;
+	const wpFontFamilyThemeJson = wpThemeJson?.settings?.typography?.fontFamilies;
+	const wpFontSizeThemeJson = wpThemeJson?.settings?.typography?.fontSizes;
 
-/**
- * Font Family
- */
-export const wpFontFamily = wpFontFamilyThemeJson?.reduce((acc, curr) => {
-	acc[curr.slug] = curr.fontFamily;
-	return acc;
-}, {});
+	/**
+	 * Colors
+	 */
+	const formattedWpColorPalette = wpColorPalleteThemeJson?.reduce((acc, curr) => {
+		acc[curr.slug] = curr.color;
+		return acc;
+	}, {});
 
-/**
- * Font Size
- */
-export const wpFontSize = wpFontSizeThemeJson?.reduce((acc, curr) => {
-	acc[curr.slug] = curr.size;
-	return acc;
-}, {});
+	exportObj.wpColors = {
+		inherit: 'inherit',
+		current: 'currentColor',
+		transparent: 'transparent',
+		...customWPColors,
+		...formattedWpColorPalette,
+	};
+
+	/**
+	 * Font Family
+	 */
+	exportObj.wpFontFamily = wpFontFamilyThemeJson?.reduce((acc, curr) => {
+		acc[curr.slug] = curr.fontFamily;
+		return acc;
+	}, {});
+
+	/**
+	 * Font Size
+	 */
+	exportObj.wpFontSize = wpFontSizeThemeJson?.reduce((acc, curr) => {
+		acc[curr.slug] = curr.size;
+		return acc;
+	}, {});
+} catch (err) {
+	console.error(`Error reading or parsing ${wpThemeJsonPath}: ${err}`);
+}
+
+module.exports = exportObj;
